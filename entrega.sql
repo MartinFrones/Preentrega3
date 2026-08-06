@@ -1,8 +1,8 @@
 CREATE DATABASE Ventas_Tech_DB;
-GO;
+GO
 
 USE Ventas_Tech_DB;
-GO;
+GO
 
 DROP TABLE IF EXISTS ventas;
 DROP TABLE IF EXISTS productos;
@@ -33,17 +33,21 @@ CREATE TABLE productos (
     CONSTRAINT fk_productos_categoria FOREIGN KEY (id_categoria) REFERENCES categorias (id_categoria)
 );
 
-CREATE TABLE ventas (
-    id_venta            INT             PRIMARY KEY,
-    id_cliente          INT,
-    id_producto         INT,
-    cantidad            INT             NOT NULL,
-    precio_unitario     DECIMAL(10,2)   NOT NULL,
-    fecha_venta         DATE            NOT NULL,
-    CONSTRAINT fk_ventas_cliente
-        FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente),
-    CONSTRAINT fk_ventas_producto
-        FOREIGN KEY (id_producto) REFERENCES productos (id_producto)
+CREATE TABLE ventas(
+    id_ventas INT PRIMARY KEY,
+    id_cliente INT,
+    id_producto INT,
+    cantidad_vendida INT NOT NULL,
+    precio_unitario DECIMAL(10,2) NOT NULL,
+    fecha_venta DATE NOT NULL,
+
+    CONSTRAINT fk_ventas_clientes
+        FOREIGN KEY (id_cliente)
+        REFERENCES Tabla_Clientes(id_cliente),
+
+    CONSTRAINT fk_ventas_productos
+        FOREIGN KEY (id_producto)
+        REFERENCES Tabla_Productos(id_producto)
 );
 
 INSERT INTO categorias VALUES (1, 'Computación', 'Laptops, PCs y monitores');
