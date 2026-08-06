@@ -29,8 +29,6 @@ CREATE TABLE productos (
     id_categoria        INT,
     precio              DECIMAL(10,2)   NOT NULL,
     stock               INT             DEFAULT 0,
-    -- activo: equivalente portable a TINYINT(1) de MySQL (no soportado
-    -- ni en PostgreSQL ni en SQL Server). 1 = activo, 0 = inactivo.
     activo              SMALLINT        DEFAULT 1,
     CONSTRAINT fk_productos_categoria FOREIGN KEY (id_categoria) REFERENCES categorias (id_categoria)
 );
